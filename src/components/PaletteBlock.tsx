@@ -24,6 +24,7 @@ export default function PaletteBlock({
   onMove,
   onCopySuccess
 }: PaletteBlockProps) {
+  const [localHex, setLocalHex] = useState(color.hex);
   const [isEditingHex, setIsEditingHex] = useState(false);
   const [inputValue, setInputValue] = useState(color.hex);
   const [showShades, setShowShades] = useState(false);
@@ -31,11 +32,22 @@ export default function PaletteBlock({
 
   const shadesRef = useRef<HTMLDivElement>(null);
   const colorPickerRef = useRef<HTMLInputElement>(null);
+  const parentTimerRef = useRef<any>(null);
 
   // Sync inputs with color prop changes
   useEffect(() => {
+    setLocalHex(color.hex);
     setInputValue(color.hex);
   }, [color.hex]);
+
+  // Clean up timer on unmount
+  useEffect(() => {
+    return () => {
+      if (parentTimerRef.current) {
+        clearTimeout(parentTimerRef.current);
+      }
+    };
+  }, []);
 
   // Close shades popover when clicking outside
   useEffect(() => {
@@ -50,8 +62,23 @@ export default function PaletteBlock({
     };
   }, []);
 
-  const contrastColor = getContrastColor(color.hex);
-  const shadesLevels = generateShadesAndTints(color.hex);
+  const contrastColor = getContrastColor(localHex);
+  const shadesLevels = generateShadesAndTints(localHex);
+
+  const throttleParentUpdate = (newHex: string) => {
+    if (parentTimerRef.current) {
+      clearTimeout(parentTimerRef.current);
+    }
+    parentTimerRef.current = setTimeout(() => {
+      onColorChange(color.id, newHex);
+    }, 40);
+  };
+
+  const handleLocalColorChange = (newHex: string) => {
+    setLocalHex(newHex);
+    setInputValue(newHex);
+    throttleParentUpdate(newHex);
+  };
 
   const handleHexSubmit = () => {
     let cleanHex = inputValue.trim().toUpperCase();
@@ -66,19 +93,23 @@ export default function PaletteBlock({
         // Expand shorthand `#FFF` to `#FFFFFF`
         cleanHex = '#' + cleanHex[1] + cleanHex[1] + cleanHex[2] + cleanHex[2] + cleanHex[3] + cleanHex[3];
       }
+      if (parentTimerRef.current) {
+        clearTimeout(parentTimerRef.current);
+      }
+      setLocalHex(cleanHex);
       onColorChange(color.id, cleanHex);
     } else {
       // Revert to original
-      setInputValue(color.hex);
+      setInputValue(localHex);
     }
     setIsEditingHex(false);
   };
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(color.hex);
+      await navigator.clipboard.writeText(localHex);
       setJustCopied(true);
-      onCopySuccess(`Copied Hex ${color.hex}`);
+      onCopySuccess(`Copied Hex ${localHex}`);
       setTimeout(() => setJustCopied(false), 2000);
     } catch (err) {
       console.error(err);
@@ -90,7 +121,7 @@ export default function PaletteBlock({
       layout
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       id={`block-${color.id}`}
-      style={{ backgroundColor: color.hex }}
+      style={{ backgroundColor: localHex }}
       className="relative flex flex-col items-center justify-between p-6 flex-1 h-[220px] md:h-auto md:min-h-[500px] outline-none group first:rounded-t-2xl md:first:rounded-t-none md:first:rounded-l-2xl last:rounded-b-2xl md:last:rounded-b-none md:last:rounded-r-2xl border-neutral-200 dark:border-neutral-800 transition-colors duration-150"
     >
       {/* 1. TOP BAR: Utilities & Info */}
@@ -129,8 +160,8 @@ export default function PaletteBlock({
         <input
           type="color"
           ref={colorPickerRef}
-          value={color.hex}
-          onChange={(e) => onColorChange(color.id, e.target.value.toUpperCase())}
+          value={localHex}
+          onChange={(e) => handleLocalColorChange(e.target.value.toUpperCase())}
           className="sr-only"
         />
 
@@ -179,7 +210,7 @@ export default function PaletteBlock({
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleHexSubmit();
                 if (e.key === 'Escape') {
-                  setInputValue(color.hex);
+                  setInputValue(localHex);
                   setIsEditingHex(false);
                 }
               }}
@@ -194,7 +225,7 @@ export default function PaletteBlock({
                 style={{ color: contrastColor }}
                 className="text-lg font-bold tracking-wider hover:opacity-80 transition-opacity uppercase cursor-pointer"
               >
-                {color.hex}
+                {localHex}
               </button>
             </div>
           )}
@@ -203,7 +234,7 @@ export default function PaletteBlock({
             style={{ color: contrastColor }}
             className="text-xs font-medium tracking-wide opacity-75 mt-0.5 pointer-events-none"
           >
-            {getColorName(color.hex)}
+            {getColorName(localHex)}
           </p>
         </div>
 
