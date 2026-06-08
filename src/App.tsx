@@ -378,10 +378,8 @@ export default function App() {
       <header id="app-header" className="border-b border-neutral-150 dark:border-neutral-900 bg-white dark:bg-neutral-950 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-20 shadow-xs">
         
         {/* Dynamic Logo Title */}
-        <div className="flex items-center space-x-3 w-full sm:w-auto">
-          <div className="h-9 w-9 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-sm">
-            D
-          </div>
+        <div className="flex items-center space-x-2.5 w-full sm:w-auto">
+          <span className="text-2xl select-none">🎨</span>
           <div className="flex flex-col">
             <h1 className="text-md font-bold text-neutral-900 dark:text-neutral-100 tracking-tight leading-none">
               Design Color
@@ -720,10 +718,8 @@ export default function App() {
       {/* PREMIUM SITE FOOTER SECTION FOR ADSENSE REGISTRATION COMPLIANCE */}
       <footer id="studio-product-footer" className="mt-8 border-t border-neutral-150 dark:border-neutral-900 bg-white dark:bg-neutral-950 px-6 py-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center space-x-2.5">
-            <div className="h-6 w-6 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              D
-            </div>
+          <div className="flex items-center space-x-2">
+            <span className="text-xl select-none">🎨</span>
             <span className="text-xs font-bold text-neutral-500 uppercase tracking-widest">
               Design Color Suite
             </span>
