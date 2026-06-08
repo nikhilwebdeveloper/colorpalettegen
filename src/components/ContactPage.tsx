@@ -48,8 +48,8 @@ export default function ContactPage() {
             </div>
             <div>
               <span className="text-[10px] text-neutral-450 uppercase tracking-widest block font-bold">Email Coordinate</span>
-              <a href="mailto:rajsain4861@gmail.com" className="text-xs font-bold text-neutral-800 dark:text-neutral-200 hover:underline">
-                rajsain4861@gmail.com
+              <a href="mailto:hello.designcolor@gmail.com" className="text-xs font-bold text-neutral-800 dark:text-neutral-200 hover:underline">
+                hello.designcolor@gmail.com
               </a>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
               </div>
               <h3 className="text-md sm:text-lg font-bold text-neutral-850 dark:text-neutral-100">Message Dispatched!</h3>
               <p className="text-xs text-neutral-500 max-w-xs">
-                Your engineering feedback request has been archived successfully. Raj will research your topic and reply within 24 working hours.
+                Your engineering feedback request has been archived successfully. Nikhil will research your topic and reply within 24 working hours.
               </p>
             </div>
           ) : (
@@ -109,7 +109,7 @@ export default function ContactPage() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Raj"
+                  placeholder="e.g. Nikhil"
                   className="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-250 dark:border-neutral-700 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-neutral-800 dark:text-neutral-200 focus:outline-hidden focus:ring-1 focus:ring-indigo-500 transition-colors"
                 />
               </div>

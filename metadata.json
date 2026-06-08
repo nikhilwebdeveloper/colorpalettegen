@@ -1,5 +1,5 @@
 {
-  "name": "Color Palette Generator",
+  "name": "Design Color",
   "description": "A clean, minimalist, and feature-rich Color Palette Generator with random palette options, custom color pickers, history tracking, dark mode, and export formats (including CSS and Tailwind configurations).",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

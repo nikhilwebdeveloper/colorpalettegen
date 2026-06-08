@@ -30,7 +30,7 @@ export default function PrivacyPage() {
             <span>Data Collection and Physical Storage</span>
           </h3>
           <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-7">
-            Aesthetic Design Studio is designed as a client-side utility workspace. We do <strong>not</strong> host custom registration backend servers or collect user email logs to use basic features. Your saved color palettes, system preferences (including Dark Mode states), and customized font selectors are safely cached directly in your browser's persistent sandbox using the <code>localStorage</code> API. Because this data remains contained entirely within your device, we cannot view, transfer, or disclose your custom workspace layouts.
+            Design Color is designed as a client-side utility workspace. We do <strong>not</strong> host custom registration backend servers or collect user email logs to use basic features. Your saved color palettes, system preferences (including Dark Mode states), and customized font selectors are safely cached directly in your browser's persistent sandbox using the <code>localStorage</code> API. Because this data remains contained entirely within your device, we cannot view, transfer, or disclose your custom workspace layouts.
           </p>
         </section>
 
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
             </span>
             <span className="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400 font-bold text-xs mt-2">
               <Mail size={14} />
-              <span>rajsain4861@gmail.com</span>
+              <span>hello.designcolor@gmail.com</span>
             </span>
           </p>
         </section>

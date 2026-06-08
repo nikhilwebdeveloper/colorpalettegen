@@ -346,11 +346,11 @@ export default function App() {
         {/* Dynamic Logo Title */}
         <div className="flex items-center space-x-3 w-full sm:w-auto">
           <div className="h-9 w-9 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-sm">
-            C
+            D
           </div>
           <div className="flex flex-col">
             <h1 className="text-md font-bold text-neutral-900 dark:text-neutral-100 tracking-tight leading-none">
-              Aesthetic Design Studio
+              Design Color
             </h1>
             <span className="text-[10px] text-neutral-450 uppercase tracking-widest mt-1">
               Minimalist Creative Workspace
@@ -688,10 +688,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center space-x-2.5">
             <div className="h-6 w-6 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              C
+              D
             </div>
             <span className="text-xs font-bold text-neutral-500 uppercase tracking-widest">
-              Aesthetic Design Studio Suite
+              Design Color Suite
             </span>
           </div>
 
@@ -727,7 +727,7 @@ export default function App() {
           </div>
 
           <p className="text-[10px] font-mono text-neutral-400 select-none">
-            © 2026 Raj Sain. All rights reserved.
+            © 2026 Nikhil. All rights reserved.
           </p>
         </div>
       </footer>

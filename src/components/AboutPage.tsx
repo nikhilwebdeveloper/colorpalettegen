@@ -13,7 +13,7 @@ export default function AboutPage() {
           Pioneering dynamic utility suites for digital craft and user experience practitioners.
         </h2>
         <p className="text-neutral-600 dark:text-neutral-350 text-sm sm:text-base leading-relaxed">
-          Welcome to the <strong>Aesthetic Design Studio Suite</strong>—a modular developer workspace engineered to make web styling efficient, intuitive, and beautiful. Founded by a visual developer, we strive to remove technical friction in modern frontend scaling.
+          Welcome to the <strong>Design Color Suite</strong>—a modular developer workspace engineered to make web styling efficient, intuitive, and beautiful. Founded by a visual developer, we strive to remove technical friction in modern frontend scaling.
         </p>
       </div>
 
@@ -71,7 +71,7 @@ export default function AboutPage() {
           <span>Meet the Creator</span>
         </h3>
         <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-350 leading-relaxed">
-          The studio is designed and developed by <strong>Raj Sain</strong>, a passionate UI architect and frontend engineer. Raj believes in creating tools that empower creatives to design high-quality interfaces with ease. Every pixel and line of color-math is crafted with extreme care to maintain elegant workspaces.
+          The studio is designed and developed by <strong>Nikhil</strong>, a passionate UI architect and frontend engineer. Nikhil believes in creating tools that empower creatives to design high-quality interfaces with ease. Every pixel and line of color-math is crafted with extreme care to maintain elegant workspaces.
         </p>
       </div>
     </div>
