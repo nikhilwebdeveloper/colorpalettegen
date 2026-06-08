@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { IPalette, IPaletteColor, ColorHarmony } from './types';
 import { 
   generateHarmonyPalette, 
@@ -95,7 +96,40 @@ const PRESET_PALETTES: IPalette[] = [
 type ActiveToolTab = 'palette' | 'gradient' | 'shadow' | 'converter' | 'fonts' | 'tints' | 'about' | 'privacy' | 'contact' | 'blog';
 
 export default function App() {
-  const [activeTool, setActiveTool] = useState<ActiveToolTab>('palette');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const pathMap: Record<string, ActiveToolTab> = {
+    '/': 'palette',
+    '/gradient': 'gradient',
+    '/shadow': 'shadow',
+    '/converter': 'converter',
+    '/fonts': 'fonts',
+    '/tints': 'tints',
+    '/about': 'about',
+    '/privacy': 'privacy',
+    '/contact': 'contact',
+    '/blog': 'blog',
+    '/palette': 'palette'
+  };
+
+  const toolMap: Record<ActiveToolTab, string> = {
+    palette: '/',
+    gradient: '/gradient',
+    shadow: '/shadow',
+    converter: '/converter',
+    fonts: '/fonts',
+    tints: '/tints',
+    about: '/about',
+    privacy: '/privacy',
+    contact: '/contact',
+    blog: '/blog'
+  };
+
+  const activeTool = pathMap[location.pathname] || 'palette';
+  const setActiveTool = (tool: ActiveToolTab) => {
+    navigate(toolMap[tool]);
+  };
   const [harmony, setHarmony] = useState<ColorHarmony>('random');
   const [paletteName, setPaletteName] = useState('Aesthetic Palette');
   const [isEditingName, setIsEditingName] = useState(false);
